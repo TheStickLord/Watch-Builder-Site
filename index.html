@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watch Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
 
         * {
             margin: 0;
             padding: 0;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 200;
         }
 
         body {
@@ -165,7 +167,7 @@
 
         <div class="selection-div flex-item">
             <br>
-            <h1 id="selection-title">Parts Selection</h1>
+            <h1 id="selection-title" style="font-weight: 200;">Parts Selection</h1>
             <br>
             <hr>
             <br>
@@ -188,13 +190,11 @@
                 <div class="menu-item" id="NH36_white">
                     <h4>NH36 - White</h4>
                     <p style="padding-top: 5px;">Day-Date movement</p>
-                    <p style="padding-top: 5px; color:red;">Dials Not Working</p>
                 </div>
 
                 <div class="menu-item" id="NH36_black">
                     <h4>NH36 - Black</h4>
                     <p style="padding-top: 5px;">Day-Date movement</p>
-                    <p style="padding-top: 5px; color:red;">Dials Not Working</p>
                 </div>
 
                 <div class="menu-item" id="NH38">
@@ -211,120 +211,51 @@
             <div class="dial-selection menu-list hidden">
 
                 <div id="NH34_36-dials" class="hidden">
-                    <h3 class="menu-subtitle">Pilot Style Dials</h3>
+                    <h3 class="menu-subtitle">Pilot Dial</h3>
+
+                        <div class="menu-item dial-buttons" id="pilot-black-dial">
+                            <h4>Black Marks</h4>
+                        </div>
+                        <div class="menu-item dial-buttons" id="pilot-tan__-dial">
+                            <h4>Tan Marks</h4>
+                        </div>
+                        <div class="menu-item dial-buttons" id="pilot-white-dial">
+                            <h4>White Marks</h4>
+                        </div>
                         
-                        <div class="menu-item pilot-dial" id="pilot-black">
-                            <h4>Black - White Indicators</h4>
+                    <h3 class="menu-subtitle">Pilot Dial</h3>
+
+                        <div class="menu-item dial-buttons" id="diver-black-dial">
+                            <h4>Black Marks</h4>
                         </div>
-
-                        <div class="menu-item pilot-dial" id="pilot-black-tan">
-                            <h4>Black - Tan Indicators</h4>
-                        </div>
-
-                        <div class="menu-item pilot-dial" id="pilot-black-black">
-                            <h4>Black - Black Indicators</h4>
-                        </div>
-
-                        <div class="menu-item pilot-dial" id="pilot-blue">
-                            <h4>Blue - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item pilot-dial" id="pilot-creme">
-                            <h4>Creme - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item pilot-dial" id="pilot-creme-black">
-                            <h4>Creme - Black Indicators</h4>
-                        </div>
-
-                        <div class="menu-item pilot-dial" id="pilot-gray">
-                            <h4>Gray - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item pilot-dial" id="pilot-green">
-                            <h4>Green - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item pilot-dial" id="pilot-white-black">
-                            <h4>White - Black Indicators</h4>
-                        </div>
-
-                        <div class="menu-item pilot-dial" id="pilot-white-tan">
-                            <h4>White - Tan Indicators</h4>
-                        </div>
-
-                    <h3 class="menu-subtitle">Diver Style Dials</h3>
-
-                        <div class="menu-item diver-dial" id="diver-black">
-                            <h4>Black - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item diver-dial" id="diver-blue">
-                            <h4>Blue - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item diver-dial" id="diver-lightblue">
-                            <h4>Light Blue - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item diver-dial" id="diver-orange">
-                            <h4>Orange - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item diver-dial" id="diver-pink">
-                            <h4>Pink - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item diver-dial" id="diver-red">
-                            <h4>Red - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item diver-dial" id="diver-tan">
-                            <h4>Tan - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item diver-dial" id="diver-white">
-                            <h4>White - White Indicators</h4>
-                        </div>
-
-                        <div class="menu-item diver-dial" id="diver-yellow">
-                            <h4>Yellow - White Indicators</h4>
+                        <div class="menu-item dial-buttons" id="diver-white-dial">
+                            <h4>White Marks</h4>
                         </div>
 
                 </div>
 
                 <div id="NH38-dials" class="hidden">
+
                     <h3 class="menu-subtitle">Exposed Movement</h3>
 
-                        <div class="menu-item open-dial" id="open-black">
-                            <h4>Black</h4>
+                        <div class="menu-item dial-buttons" id="open-white-dial">
+                            <h4>White Marks</h4>
                         </div>
 
-                        <div class="menu-item open-dial" id="open-blue">
-                            <h4>Blue</h4>
+                    <h3 class="menu-subtitle">Dateless Dial</h3>
+                    
+                        <div class="menu-item dial-buttons" id="dateless-black-dial">
+                            <h4>Black Marks</h4>
                         </div>
 
-                        <div class="menu-item open-dial" id="open-gray">
-                            <h4>Gray</h4>
+                        <div class="menu-item dial-buttons" id="dateless-tan__-dial">
+                            <h4>Tan Marks</h4>
                         </div>
 
-                        <div class="menu-item open-dial" id="open-lightblue">
-                            <h4>Light Blue</h4>
+                        <div class="menu-item dial-buttons" id="dateless-white-dial">
+                            <h4>White Marks</h4>
                         </div>
 
-                        <div class="menu-item open-dial" id="open-red">
-                            <h4>Red</h4>
-                        </div>
-
-                        <div class="menu-item open-dial" id="open-white">
-                            <h4>White</h4>
-                        </div>
-
-                        <div class="menu-item open-dial" id="open-yellow">
-                            <h4>Yellow</h4>
-                        </div>
-
-                    <h3 class="menu-subtitle">Dateless</h3>
                 </div>
                 
             </div>
@@ -631,20 +562,102 @@
         </div>
 
         <div class="render-div flex-item">
-            <h1 style="font-size: 2.5rem;">Watch Builder</h1>
+            <h1 style="font-size: 2.5rem; padding-top: 10px; font-weight: 200;">Watch Builder</h1>
 
-            <img id="movement" class="renderImg" src="" alt="">
-            <img id="dial" class="renderImg" src="" alt="">
-            <img id="gmt" class="renderImg" src="" alt="">
-            <img id="hands" class="renderImg" src="" alt="">
-            <img id="case" class="renderImg" src="" alt="">
+            <img id="movement" class="renderImg" src="" alt="" style="filter: drop-shadow(-2.5px 2.5px 5px black);">
+            <div style="width: 100%; display: flex; justify-content: center; align-items: center;" class="renderImg">
+                <div class="greyscale-filter">
+                    <div class="brightness-filter">
+                        <div class="hue-filter">
+                            <img id="dial-blank" class="renderImg" src="" alt="" style="filter: drop-shadow(-2.5px 2.5px 5px black);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img id="dial-overlay" class="renderImg" src="" alt="">
+            <img id="gmt" class="renderImg" src="" alt="" style="filter: drop-shadow(-5px 2.5px 5px black);">
+            <img id="hands" class="renderImg" src="" alt="" style="filter: drop-shadow(-10px 5px 5px black);">
+            <img id="case" class="renderImg" src="" alt="" style="filter: drop-shadow(-2.5px 2.5px 5px black);">
             <img id="bezel" class="renderImg" src="" alt="">
+
+            <div id="color-picker-holder" style="width: 250px; bottom: 5rem; right: 2rem; background-color: aliceblue; padding: 10px; position: absolute; box-shadow: 5px 5px 20px black;" class="hidden">
+                <div style="width: 100%; display: flex; justify-content: left;">
+                    <h3>Color: </h3>
+                    <input id="hue-slider" type="range">
+                    <h4 id="hue-value-text">0</h4>
+                </div>
+                
+            
+                <div style="width: 100%; display: flex; justify-content: left;">
+                    <h3>Brightness: </h3>
+                    <input id="brightness-slider" min="-50" max="150" type="range" style="color: black;">
+                    <h4 id="brightness-value-text">1</h4>
+                </div>
+            
+                <div style="width: 100%; display: flex; justify-content: left;">
+                    <h3>Greyscale: </h3>
+                    <input id="greyscale-slider" type="range">
+                    <h4 id="greyscale-value-text">0</h4>
+                </div>
+            </div>
 
             <p style="top: 95vh; position: absolute;">Built By Russell S.</p>
             <p style="top: 97vh; position: absolute;">Ver. 10/8/2024</p>
         </div>
 
     </div>
+
+    <script>
+
+        // Var Declare
+
+        dialHue = document.querySelector('.hue-filter')
+        dialBrightness = document.querySelector('.brightness-filter')
+        dialGreyscale = document.querySelector('.greyscale-filter')
+
+        hueSlider = document.getElementById("hue-slider")
+        brightnessSlider = document.getElementById("brightness-slider")
+        greyscaleSlider = document.getElementById("greyscale-slider")
+
+        hueSliderText = document.getElementById('hue-value-text')
+        brightnessSliderText = document.getElementById('brightness-value-text')
+        greyscaleSliderManText = document.getElementById('greyscale-value-text')
+
+
+        // Slider Set
+
+        hueSlider.value = 0;
+        brightnessSlider.value = 50;
+        greyscaleSlider.value = 0;
+
+
+        // Slider Code
+
+        hueSlider.addEventListener("input", function() {
+            shift = (hueSlider.value * (360/100));
+            dialHue.style.filter = `hue-rotate(${shift}deg)`
+            hueSliderText.textContent = Math.round(shift)
+        })
+
+        brightnessSlider.addEventListener("input", function(){
+            shift = 1 + ((brightnessSlider.value / 100) - .5);
+
+            if (shift == 2) {
+                shift = 10000
+                brightnessSliderText.textContent = "Max"
+            } else {
+                brightnessSliderText.textContent = Math.round(shift * 10)/10
+            }
+            dialBrightness.style.filter = `brightness(${shift})`
+        })
+
+        greyscaleSlider.addEventListener("input", function(){
+            shift = 1 + ((greyscaleSlider.value / 100) - 1);
+            dialGreyscale.style.filter = `grayscale(${shift})`
+            greyscaleSliderManText.textContent = Math.round(shift * 10)/10
+        })
+
+    </script>
 
     <script>
         function toggleVisibility(event) {
@@ -660,7 +673,8 @@
 
     <script>
         movementImage = document.getElementById("movement");
-        dialImage = document.getElementById("dial");
+        dialBlankImage = document.getElementById("dial-blank");
+        dialOverlayImage = document.getElementById("dial-overlay");
         gmtImage = document.getElementById("gmt");
         handsImage = document.getElementById("hands");
         caseImage = document.getElementById("case");
@@ -736,37 +750,39 @@
 
         // Dial Selection
 
-        const pilotDials = document.querySelectorAll(".pilot-dial");
-        pilotDials.forEach(dial => {
-            dial.addEventListener("click", function() {
-                color = dial.id
-                color = color.substring(6, color.length)
-                fileLocation = "dial/" + currentMovement + "/Pilot/" + color + ".png"
-                dialImage.src = fileLocation
+        const dialButtons = document.querySelectorAll(".dial-buttons");
+        dialButtons.forEach(button => {
+            button.addEventListener("click", function() {
+
+                buttonID = button.id
+                document.getElementById("color-picker-holder").classList.remove('hidden')
+                
+                if (currentMovement == "NH34-NH35") {
+                    dialBlankImage.src = "dial/NH34-NH35-NH36/Blanks/NH34-35.png"
+                } else if(currentMovement == "NH36") {
+                    dialBlankImage.src = "dial/NH34-NH35-NH36/Blanks/NH36.png"
+                } 
+
+                if (buttonID.substring(0, 5) == "diver") {
+
+                    dialOverlayImage.src = "dial/NH34-NH35-NH36/Diver/diver-" + buttonID.substring(6, 11) + ".png"
+
+                } else if (buttonID.substring(0, 5) == "pilot") {
+
+                    dialOverlayImage.src = "dial/NH34-NH35-NH36/Pilot/pilot-" + buttonID.substring(6, 11) + ".png"
+
+                } else if (buttonID.substring(0, 4) == "open") {
+                    dialBlankImage.src = "dial/NH38/exposed.png"
+
+                    dialOverlayImage.src = "dial/NH38/Open-Movement/exposed-" + buttonID.substring(5, 10) + ".png"
+                } else if (buttonID.substring(0, 4) == "date") {
+                    dialBlankImage.src = "dial/NH38/dateless.png"
+                    
+                    dialOverlayImage.src = "dial/NH38/Dateless/pilot-" + buttonID.substring(9, 14) + ".png"
+                }
+
             });
         });
-
-        const diverDials = document.querySelectorAll(".diver-dial");
-        diverDials.forEach(dial => {
-            dial.addEventListener("click", function() {
-                color = dial.id
-                color = color.substring(6, color.length)
-                fileLocation = "dial/" + currentMovement + "/Diver/" + color + ".png"
-                dialImage.src = fileLocation
-            });
-        });
-
-        const openDials = document.querySelectorAll(".open-dial");
-        openDials.forEach(dial => {
-            dial.addEventListener("click", function() {
-                color = dial.id
-                color = color.substring(5, color.length)
-                fileLocation = "dial/" + currentMovement + "/Open-Movement/" + color + ".png"
-                dialImage.src = fileLocation
-            });
-        });
-
-
 
         // Hand Selection
 
@@ -881,8 +897,12 @@
         // Clear All
 
         document.getElementById("clear-button").addEventListener("click", function(){
+
+            document.getElementById("color-picker-holder").classList.add('hidden')
+
             movementImage.src = ""
-            dialImage.src = ""
+            dialBlankImage.src = ""
+            dialOverlayImage.src = ""
             gmtImage.src = ""
             handsImage.src = ""
             caseImage.src = ""
@@ -892,5 +912,6 @@
             caseReveal("none")
         })
     </script>
+
 </body>
 </html>
