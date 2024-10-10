@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Builder</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .main-body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between; 
+        }
+
+        .flex-item { 
+            margin: 5px;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 0;
+            text-align: center;
+            width: 50%; 
+        }
+
+        .selection-div {
+            background-color: aliceblue;
+            margin-left: 0;
+            height: 100vh;
+            width: 33%;
+            box-shadow: 5px 0px 100px black;
+            overflow-y: scroll;
+            direction: rtl;
+        }
+
+        .selection-button {
+            cursor: pointer;
+            color: black;
+            user-select: none;
+        }
+
+        .selection-button:hover {
+            animation: text-to-color .3s;
+            color: rgb(141, 141, 141);
+        }
+
+        @keyframes text-to-color {
+            0% {
+                color: black;
+            }
+            100% {
+                color: rgb(141, 141, 141);
+            }
+        }
+
+        #selection-title {
+            cursor: default;
+            user-select: none;
+        }
+
+        #clear-button {
+            margin-top: 20px;
+            background-color:  rgba(197, 196, 196, 0.959);
+            display: inline-block;
+            padding: 10px;
+            cursor: pointer;
+            border-style: solid;
+            border-width: 1px;
+            margin-bottom: 10px;
+        }
+
+        #clear-button:hover {
+            color: rgba(99, 99, 99, 0.959);
+            background-color: rgba(211, 209, 209, 0.959);
+        }
+
+        .menu-list {
+            margin-top: 20px;
+            max-height: 500px;
+            background-color: rgba(216, 216, 216, 0.959);
+            animation: grow 1s;
+            overflow: auto;
+            direction: ltr;
+            box-shadow: 0px 1px 5px black;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            overflow-x: hidden;
+        }
+
+        @keyframes grow {
+            0% {
+                max-height: 0;
+                overflow: hidden;
+            }
+            100% {
+                max-height: 500px;
+                overflow: hidden;
+            }
+        }
+
+        .menu-item {
+            position: relative;
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            background-color: rgba(197, 196, 196, 0.959);
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            animation: menuitem-hover .5s;
+            background-color: rgba(207, 207, 207, 0.959);
+            user-select: none;
+        }
+
+        .menu-subtitle {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            user-select: none;
+        }
+
+        @keyframes menuitem-hover {
+            0% {
+                background-color: rgba(197, 196, 196, 0.959);
+            }
+            100% {
+                background-color: rgba(207, 207, 207, 0.959);
+            }
+        }
+
+        .render-div{
+            overflow: hidden;
+            width: 66%;
+            position: relative;
+        }
+
+        .renderImg {
+            position: absolute;
+            width: 80vh;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-body flex-container">
+
+        <div class="selection-div flex-item">
+            <br>
+            <h1 id="selection-title">Parts Selection</h1>
+            <br>
+            <hr>
+            <br>
+
+            <h3 class="selection-button">+ Movement</h3>
+            <div class="movment-selection menu-list hidden">
+
+                <div class="menu-item" id="NH34-35_white">
+                    <h4>NH34/35 - White</h4>
+                    <p style="padding-top: 5px;">NH34 : GMT movement</p>
+                    <p style="padding-top: 5px;">NH35 : Date only movement</p>
+                </div>
+
+                <div class="menu-item" id="NH34-35_black">
+                    <h4>NH34/35 - Black</h4>
+                    <p style="padding-top: 5px;">NH34 : GMT movement</p>
+                    <p style="padding-top: 5px;">NH35 : Date only movement</p>
+                </div>
+
+                <div class="menu-item" id="NH36_white">
+                    <h4>NH36 - White</h4>
+                    <p style="padding-top: 5px;">Day-Date movement</p>
+                    <p style="padding-top: 5px; color:red;">Dials Not Working</p>
+                </div>
+
+                <div class="menu-item" id="NH36_black">
+                    <h4>NH36 - Black</h4>
+                    <p style="padding-top: 5px;">Day-Date movement</p>
+                    <p style="padding-top: 5px; color:red;">Dials Not Working</p>
+                </div>
+
+                <div class="menu-item" id="NH38">
+                    <h4>NH38</h4>
+                    <p style="padding-top: 5px;">Exposed spring movement</p>
+                </div>
+            
+            </div>
+            <br>
+            <hr>
+            <br>
+
+            <h3 class="selection-button">+ Dial</h3>
+            <div class="dial-selection menu-list hidden">
+
+                <div id="NH34_36-dials" class="hidden">
+                    <h3 class="menu-subtitle">Pilot Style Dials</h3>
+                        
+                        <div class="menu-item pilot-dial" id="pilot-black">
+                            <h4>Black - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item pilot-dial" id="pilot-black-tan">
+                            <h4>Black - Tan Indicators</h4>
+                        </div>
+
+                        <div class="menu-item pilot-dial" id="pilot-black-black">
+                            <h4>Black - Black Indicators</h4>
+                        </div>
+
+                        <div class="menu-item pilot-dial" id="pilot-blue">
+                            <h4>Blue - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item pilot-dial" id="pilot-creme">
+                            <h4>Creme - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item pilot-dial" id="pilot-creme-black">
+                            <h4>Creme - Black Indicators</h4>
+                        </div>
+
+                        <div class="menu-item pilot-dial" id="pilot-gray">
+                            <h4>Gray - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item pilot-dial" id="pilot-green">
+                            <h4>Green - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item pilot-dial" id="pilot-white-black">
+                            <h4>White - Black Indicators</h4>
+                        </div>
+
+                        <div class="menu-item pilot-dial" id="pilot-white-tan">
+                            <h4>White - Tan Indicators</h4>
+                        </div>
+
+                    <h3 class="menu-subtitle">Diver Style Dials</h3>
+
+                        <div class="menu-item diver-dial" id="diver-black">
+                            <h4>Black - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item diver-dial" id="diver-blue">
+                            <h4>Blue - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item diver-dial" id="diver-lightblue">
+                            <h4>Light Blue - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item diver-dial" id="diver-orange">
+                            <h4>Orange - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item diver-dial" id="diver-pink">
+                            <h4>Pink - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item diver-dial" id="diver-red">
+                            <h4>Red - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item diver-dial" id="diver-tan">
+                            <h4>Tan - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item diver-dial" id="diver-white">
+                            <h4>White - White Indicators</h4>
+                        </div>
+
+                        <div class="menu-item diver-dial" id="diver-yellow">
+                            <h4>Yellow - White Indicators</h4>
+                        </div>
+
+                </div>
+
+                <div id="NH38-dials" class="hidden">
+                    <h3 class="menu-subtitle">Exposed Movement</h3>
+
+                        <div class="menu-item open-dial" id="open-black">
+                            <h4>Black</h4>
+                        </div>
+
+                        <div class="menu-item open-dial" id="open-blue">
+                            <h4>Blue</h4>
+                        </div>
+
+                        <div class="menu-item open-dial" id="open-gray">
+                            <h4>Gray</h4>
+                        </div>
+
+                        <div class="menu-item open-dial" id="open-lightblue">
+                            <h4>Light Blue</h4>
+                        </div>
+
+                        <div class="menu-item open-dial" id="open-red">
+                            <h4>Red</h4>
+                        </div>
+
+                        <div class="menu-item open-dial" id="open-white">
+                            <h4>White</h4>
+                        </div>
+
+                        <div class="menu-item open-dial" id="open-yellow">
+                            <h4>Yellow</h4>
+                        </div>
+
+                    <h3 class="menu-subtitle">Dateless</h3>
+                </div>
+                
+            </div>
+            <br>
+            <hr>
+            <br>
+
+            <h3 class="selection-button">+ Hands</h3>
+            <div class="hand-selection menu-list hidden">
+
+                <div class="hidden" id="all-hands">
+                    <h3 class="menu-subtitle">Mercedes Hands</h3>
+
+                        <div class="menu-item mercedes-hands" id="mercedes-gold">
+                            <h4>Gold</h4>
+                        </div>
+
+                        <div class="menu-item mercedes-hands" id="mercedes-gold-blue">
+                            <h4>Gold - Blue Second Hand</h4>
+                        </div>
+
+                        <div class="menu-item mercedes-hands" id="mercedes-gold-red">
+                            <h4>Gold - Red Second Hand</h4>
+                        </div>
+
+                        <div class="menu-item mercedes-hands" id="mercedes-rosegold">
+                            <h4>Rose Gold</h4>
+                        </div>
+
+                        <div class="menu-item mercedes-hands" id="mercedes-silver">
+                            <h4>Silver</h4>
+                        </div>
+
+                        <div class="menu-item mercedes-hands" id="mercedes-silver-blue">
+                            <h4>Silver - Blue Second Hand</h4>
+                        </div>
+
+                        <div class="menu-item mercedes-hands" id="mercedes-silver-red">
+                            <h4>Silver - Red Second Hand</h4>
+                        </div>
+
+                        <div class="menu-item mercedes-hands" id="mercedes-white">
+                            <h4>White</h4>
+                        </div>
+
+                    <h3 class="menu-subtitle">Pilot Hands</h3>
+
+                        <div class="menu-item pilot-hands" id="pilot-black">
+                            <h4>Black</h4>
+                        </div>
+
+                        <div class="menu-item pilot-hands" id="pilot-red">
+                            <h4>Red</h4>
+                        </div>
+
+                        <div class="menu-item pilot-hands" id="pilot-tan">
+                            <h4>Tan</h4>
+                        </div>
+
+                        <div class="menu-item pilot-hands" id="pilot-white">
+                            <h4>White</h4>
+                        </div>
+
+                    <h3 class="menu-subtitle">SKX Hands</h3>
+
+                        <div class="menu-item SKX-hands" id="SKX-black">
+                            <h4>Black</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-black-black">
+                            <h4>Black - Black/No Lume</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-blackblue">
+                            <h4>Black - Blue Second Hand</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-blackorange">
+                            <h4>Black - Orange Second Hand</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-blackred">
+                            <h4>Black - Red Second Hand</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-blue">
+                            <h4>Blue</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-gold">
+                            <h4>Gold</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-green">
+                            <h4>Green</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-lightblue">
+                            <h4>Light Blue</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-red">
+                            <h4>Red</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-rosegold">
+                            <h4>Rose Gold</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-silver">
+                            <h4>Silver</h4>
+                        </div>
+
+                        <div class="menu-item SKX-hands" id="SKX-white">
+                            <h4>White</h4>
+                        </div>
+
+                </div>
+
+                <div class="hidden" id="NH34-gmt-hands">
+                    <h3 class="menu-subtitle">GMT Hands</h3>
+
+                        <div class="menu-item gmt-hands" id="gmt-blue">
+                            <h4>Blue</h4>
+                        </div>
+
+                        <div class="menu-item gmt-hands" id="gmt-gold">
+                            <h4>Gold</h4>
+                        </div>
+
+                        <div class="menu-item gmt-hands" id="gmt-green">
+                            <h4>Green</h4>
+                        </div>
+
+                        <div class="menu-item gmt-hands" id="gmt-red">
+                            <h4>Red</h4>
+                        </div>
+
+                        <div class="menu-item gmt-hands" id="gmt-rosegold">
+                            <h4>Rose Gold</h4>
+                        </div>
+
+                        <div class="menu-item gmt-hands" id="gmt-silver">
+                            <h4>Silver</h4>
+                        </div>
+
+                        <div class="menu-item gmt-hands" id="gmt-white">
+                            <h4>White</h4>
+                        </div>
+
+                </div>
+
+            </div>
+            <br>
+            <hr>
+            <br>
+
+            <h3 class="selection-button">+ Case</h3>
+            <div class="case-selection menu-list hidden">
+                <h3 class="menu-subtitle">Field/Pilot Cases</h3>
+
+                    <div class="menu-item pilot-case" id="pilot-black">
+                        <h4>Black</h4>
+                    </div>
+
+                    <div class="menu-item pilot-case" id="pilot-gold">
+                        <h4>Gold</h4>
+                    </div>
+
+                    <div class="menu-item pilot-case" id="pilot-rosegold">
+                        <h4>Rose Gold</h4>
+                    </div>
+
+                    <div class="menu-item pilot-case" id="pilot-silver">
+                        <h4>Silver</h4>
+                    </div>
+
+                <h3 class="menu-subtitle">Rolex Style Cases</h3>
+
+                    <div class="menu-item rolex-case" id="rolex-black">
+                        <h4>Black</h4>
+                    </div>
+
+                    <div class="menu-item rolex-case" id="rolex-gold">
+                        <h4>Gold</h4>
+                    </div>
+
+                    <div class="menu-item rolex-case" id="rolex-rosegold">
+                        <h4>Rose Gold</h4>
+                    </div>
+
+                    <div class="menu-item rolex-case" id="rolex-silver">
+                        <h4>Silver</h4>
+                    </div>
+
+                <h3 class="menu-subtitle">Seiko SKX Style Cases</h3>
+
+                    <div class="menu-item SKX-case" id="SKX-black">
+                        <h4>Black</h4>
+                    </div>
+
+                    <div class="menu-item SKX-case" id="SKX-gold">
+                        <h4>Gold</h4>
+                    </div>
+
+                    <div class="menu-item SKX-case" id="SKX-rosegold">
+                        <h4>Rose Gold</h4>
+                    </div>
+
+                    <div class="menu-item SKX-case" id="SKX-silver">
+                        <h4>Silver</h4>
+                    </div>
+
+            </div>
+            <br>
+            <hr>
+            <br>
+            
+            <div id="bezel-reveal" class="hidden">
+
+                <h3 class="selection-button">+ Bezel</h3>
+                    <div class="bezel-selection menu-list hidden">
+
+                        <h3 class="menu-subtitle">Diver Bezels</h3>
+
+                            <div class="menu-item diver-bezel" id="diver-black">
+                                <h4>Black</h4>
+                            </div>
+
+                            <div class="menu-item diver-bezel" id="diver-black-black">
+                                <h4>Black - Black Font</h4>
+                            </div>
+
+                            <div class="menu-item diver-bezel" id="diver-blue">
+                                <h4>Blue</h4>
+                            </div>
+
+                            <div class="menu-item diver-bezel" id="diver-gold">
+                                <h4>Gold</h4>
+                            </div>
+
+                            <div class="menu-item diver-bezel" id="diver-orange">
+                                <h4>Orange</h4>
+                            </div>
+
+                            <div class="menu-item diver-bezel" id="diver-red">
+                                <h4>Red</h4>
+                            </div>
+
+                            <div class="menu-item diver-bezel" id="diver-silver">
+                                <h4>Silver</h4>
+                            </div>
+
+                            <div class="menu-item diver-bezel" id="diver-white">
+                                <h4>White</h4>
+                            </div>
+
+                            <div class="menu-item diver-bezel" id="diver-yellow">
+                                <h4>Yellow</h4>
+                            </div>
+
+                        <h3 class="menu-subtitle">GMT Bezels</h3>
+
+                            <div class="menu-item gmt-bezel" id="gmt-black">
+                                <h4>Black</h4>
+                            </div>
+
+                            <div class="menu-item gmt-bezel" id="gmt-batman">
+                                <h4>Batman</h4>
+                            </div>
+
+                            <div class="menu-item gmt-bezel" id="gmt-coke">
+                                <h4>Coke</h4>
+                            </div>
+
+                            <div class="menu-item gmt-bezel" id="gmt-Gold">
+                                <h4>Gold</h4>
+                            </div>
+
+                            <div class="menu-item gmt-bezel" id="gmt-hulk">
+                                <h4>Hulk</h4>
+                            </div>
+
+                            <div class="menu-item gmt-bezel" id="gmt-pepsi">
+                                <h4>Pepsi</h4>
+                            </div>
+
+                            <div class="menu-item gmt-bezel" id="gmt-silver">
+                                <h4>Silver</h4>
+                            </div>
+
+                            <div class="menu-item gmt-bezel" id="gmt-white">
+                                <h4>White</h4>
+                            </div>
+
+                    </div>
+                <br>
+                <hr>
+
+            </div>
+            
+            <h3 id="clear-button">Clear All</h3>
+            
+        </div>
+
+        <div class="render-div flex-item">
+            <h1 style="font-size: 2.5rem;">Watch Builder</h1>
+
+            <img id="movement" class="renderImg" src="" alt="">
+            <img id="dial" class="renderImg" src="" alt="">
+            <img id="gmt" class="renderImg" src="" alt="">
+            <img id="hands" class="renderImg" src="" alt="">
+            <img id="case" class="renderImg" src="" alt="">
+            <img id="bezel" class="renderImg" src="" alt="">
+
+            <p style="top: 95vh; position: absolute;">Built By Russell S.</p>
+            <p style="top: 97vh; position: absolute;">Ver. 10/8/2024</p>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleVisibility(event) {
+            const element = event.target.nextElementSibling; 
+            element.classList.toggle("hidden"); 
+        }
+
+        const buttons = document.querySelectorAll(".selection-button");
+        buttons.forEach(button => {
+            button.addEventListener("click", toggleVisibility);
+        });
+    </script>
+
+    <script>
+        movementImage = document.getElementById("movement");
+        dialImage = document.getElementById("dial");
+        gmtImage = document.getElementById("gmt");
+        handsImage = document.getElementById("hands");
+        caseImage = document.getElementById("case");
+        bezelImage = document.getElementById("bezel");
+
+
+        NH34white = document.getElementById('NH34-35_white');
+        NH34black = document.getElementById('NH34-35_black');
+        NH36white = document.getElementById('NH36_white');
+        NH36black = document.getElementById('NH36_black');
+        NH38 = document.getElementById('NH38');
+
+        currentMovement = "";
+        currentCase = "";
+
+
+        // Movement Selection
+
+        function typeReveal(movementType) {
+            currentMovement = movementType
+
+            if (currentMovement == "NH34-NH35" || currentMovement == "NH36") {
+                document.getElementById("NH34_36-dials").classList.remove("hidden")
+                document.getElementById("NH38-dials").classList.add("hidden")
+
+                document.getElementById("all-hands").classList.remove("hidden")
+                document.getElementById("NH34-gmt-hands").classList.remove("hidden")
+
+                if (currentMovement == "NH36") {
+                    document.getElementById("NH34-gmt-hands").classList.add("hidden")
+                }
+            } else if (currentMovement == "NH38") {
+                document.getElementById("NH34_36-dials").classList.add("hidden")
+                document.getElementById("NH38-dials").classList.remove("hidden")
+
+                document.getElementById("all-hands").classList.remove("hidden")
+                document.getElementById("NH34-gmt-hands").classList.add("hidden")
+            } else {
+                document.getElementById("NH34_36-dials").classList.add("hidden")
+                document.getElementById("NH38-dials").classList.add("hidden")
+
+                document.getElementById("all-hands").classList.add("hidden")
+                document.getElementById("NH34-gmt-hands").classList.add("hidden")
+            }
+        }
+
+
+        NH34white.addEventListener("click", function() {
+            movementImage.src = "movements/NH34_NH35-White.png"
+            typeReveal("NH34-NH35")
+        })
+
+        NH34black.addEventListener("click", function() {
+            movementImage.src = "movements/NH34_NH35-Black.png"
+            typeReveal("NH34-NH35")
+        })
+
+        NH36white.addEventListener("click", function() {
+            movementImage.src = "movements/NH36-White.png"
+            typeReveal("NH36")
+        })
+
+        NH36black.addEventListener("click", function() {
+            movementImage.src = "movements/NH36-Black.png"
+            typeReveal("NH36")
+        })
+
+        NH38.addEventListener("click", function() {
+            movementImage.src = "movements/NH38.png"
+            typeReveal("NH38")
+        })
+
+
+        // Dial Selection
+
+        const pilotDials = document.querySelectorAll(".pilot-dial");
+        pilotDials.forEach(dial => {
+            dial.addEventListener("click", function() {
+                color = dial.id
+                color = color.substring(6, color.length)
+                fileLocation = "dial/" + currentMovement + "/Pilot/" + color + ".png"
+                dialImage.src = fileLocation
+            });
+        });
+
+        const diverDials = document.querySelectorAll(".diver-dial");
+        diverDials.forEach(dial => {
+            dial.addEventListener("click", function() {
+                color = dial.id
+                color = color.substring(6, color.length)
+                fileLocation = "dial/" + currentMovement + "/Diver/" + color + ".png"
+                dialImage.src = fileLocation
+            });
+        });
+
+        const openDials = document.querySelectorAll(".open-dial");
+        openDials.forEach(dial => {
+            dial.addEventListener("click", function() {
+                color = dial.id
+                color = color.substring(5, color.length)
+                fileLocation = "dial/" + currentMovement + "/Open-Movement/" + color + ".png"
+                dialImage.src = fileLocation
+            });
+        });
+
+
+
+        // Hand Selection
+
+        const mercedesHands = document.querySelectorAll(".mercedes-hands");
+        mercedesHands.forEach(hands => {
+            hands.addEventListener("click", function() {
+                color = hands.id
+                color = color.substring(9, color.length)
+                fileLocation = "hands/Mercedes/" + color + ".png"
+                handsImage.src = fileLocation
+            });
+        });
+
+        const pilotHands = document.querySelectorAll(".pilot-hands");
+        pilotHands.forEach(hands => {
+            hands.addEventListener("click", function() {
+                color = hands.id
+                color = color.substring(6, color.length)
+                fileLocation = "hands/Pilot/" + color + ".png"
+                handsImage.src = fileLocation
+            });
+        });
+
+        const SKXHands = document.querySelectorAll(".SKX-hands");
+        SKXHands.forEach(hands => {
+            hands.addEventListener("click", function() {
+                color = hands.id
+                color = color.substring(4, color.length)
+                fileLocation = "hands/SKX/" + color + ".png"
+                handsImage.src = fileLocation
+            });
+        });
+
+        const gmtHands = document.querySelectorAll(".gmt-hands");
+        gmtHands.forEach(hands => {
+            hands.addEventListener("click", function() {
+                color = hands.id
+                color = color.substring(4, color.length)
+                fileLocation = "hands/GMT/" + color + ".png"
+                gmtImage.src = fileLocation
+            });
+        });
+
+
+        //Case Selection
+
+        function caseReveal(caseType){
+            if (caseType == "SKX" || caseType == "Rolex") {
+                document.getElementById("bezel-reveal").classList.remove("hidden")
+            } else {
+                document.getElementById("bezel-reveal").classList.add("hidden")
+            }
+        }
+
+        const pilotCases = document.querySelectorAll(".pilot-case");
+        pilotCases.forEach(cases => {
+            cases.addEventListener("click", function() {
+                caseReveal("Pilot")
+                color = cases.id
+                color = color.substring(6, color.length)
+                fileLocation = "case/Pilot/" + color + ".png"
+                caseImage.src = fileLocation
+            });
+        });
+
+        const rolexCases = document.querySelectorAll(".rolex-case");
+        rolexCases.forEach(cases => {
+            cases.addEventListener("click", function() {
+                caseReveal("Rolex")
+                color = cases.id
+                color = color.substring(6, color.length)
+                fileLocation = "case/Rolex/" + color + ".png"
+                caseImage.src = fileLocation
+            });
+        });
+
+        const SKXCase = document.querySelectorAll(".SKX-case");
+        SKXCase.forEach(cases => {
+            cases.addEventListener("click", function() {
+                caseReveal("SKX")
+                color = cases.id
+                color = color.substring(4, color.length)
+                fileLocation = "case/SKX/" + color + ".png"
+                caseImage.src = fileLocation
+            });
+        });
+
+
+        // Bezel Selection
+
+        const diverBezel = document.querySelectorAll(".diver-bezel");
+        diverBezel.forEach(bezel => {
+            bezel.addEventListener("click", function() {
+                color = bezel.id
+                color = color.substring(6, color.length)
+                fileLocation = "case/Bezel/Diver/" + color + ".png"
+                bezelImage.src = fileLocation
+            });
+        });
+
+        const gmtBezel = document.querySelectorAll(".gmt-bezel");
+        gmtBezel.forEach(bezel => {
+            bezel.addEventListener("click", function() {
+                color = bezel.id
+                color = color.substring(4, color.length)
+                fileLocation = "case/Bezel/GMT/" + color + ".png"
+                bezelImage.src = fileLocation
+            });
+        });
+
+
+        // Clear All
+
+        document.getElementById("clear-button").addEventListener("click", function(){
+            movementImage.src = ""
+            dialImage.src = ""
+            gmtImage.src = ""
+            handsImage.src = ""
+            caseImage.src = ""
+            bezelImage.src = ""
+
+            typeReveal("none")
+            caseReveal("none")
+        })
+    </script>
+</body>
+</html>
