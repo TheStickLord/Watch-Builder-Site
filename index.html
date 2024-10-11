@@ -677,17 +677,17 @@
 
         // Var Declare
 
-        dialHue = document.querySelector('.hue-filter')
-        dialBrightness = document.querySelector('.brightness-filter')
-        dialGreyscale = document.querySelector('.greyscale-filter')
+        const dialHue = document.querySelector('.hue-filter')
+        const dialBrightness = document.querySelector('.brightness-filter')
+        const dialGreyscale = document.querySelector('.greyscale-filter')
 
-        hueSlider = document.getElementById("hue-slider")
-        brightnessSlider = document.getElementById("brightness-slider")
-        greyscaleSlider = document.getElementById("greyscale-slider")
+        const hueSlider = document.getElementById("hue-slider")
+        const brightnessSlider = document.getElementById("brightness-slider")
+        const greyscaleSlider = document.getElementById("greyscale-slider")
 
-        hueSliderText = document.getElementById('hue-value-text')
-        brightnessSliderText = document.getElementById('brightness-value-text')
-        greyscaleSliderManText = document.getElementById('greyscale-value-text')
+        const hueSliderText = document.getElementById('hue-value-text')
+        const brightnessSliderText = document.getElementById('brightness-value-text')
+        const greyscaleSliderManText = document.getElementById('greyscale-value-text')
 
 
         // Slider Set
@@ -700,16 +700,16 @@
         // Slider Code
 
         hueSlider.addEventListener("input", function() {
-            shift = (hueSlider.value * (360/100));
+            let shift = (hueSlider.value * (360/100));
             dialHue.style.filter = `hue-rotate(${shift}deg)`
             hueSliderText.textContent = Math.round(shift)
         })
 
         brightnessSlider.addEventListener("input", function(){
-            shift = 1 + ((brightnessSlider.value / 100) - .5);
+            let shift = 1 + ((brightnessSlider.value / 100) - .5);
 
             if (shift == 2) {
-                shift = 10000
+                let shift = 10000
                 brightnessSliderText.textContent = "Max"
             } else {
                 brightnessSliderText.textContent = Math.round(shift * 10)/10
@@ -718,7 +718,7 @@
         })
 
         greyscaleSlider.addEventListener("input", function(){
-            shift = 1 + ((greyscaleSlider.value / 100) - 1);
+            let shift = 1 + ((greyscaleSlider.value / 100) - 1);
             dialGreyscale.style.filter = `grayscale(${shift})`
             greyscaleSliderManText.textContent = Math.round(shift * 10)/10
         })
@@ -738,23 +738,23 @@
     </script>
 
     <script>
-        movementImage = document.getElementById("movement");
-        dialBlankImage = document.getElementById("dial-blank");
-        dialOverlayImage = document.getElementById("dial-overlay");
-        gmtImage = document.getElementById("gmt");
-        handsImage = document.getElementById("hands");
-        caseImage = document.getElementById("case");
-        bezelImage = document.getElementById("bezel");
+        const movementImage = document.getElementById("movement");
+        const dialBlankImage = document.getElementById("dial-blank");
+        const dialOverlayImage = document.getElementById("dial-overlay");
+        const gmtImage = document.getElementById("gmt");
+        const handsImage = document.getElementById("hands");
+        const caseImage = document.getElementById("case");
+        const bezelImage = document.getElementById("bezel");
 
 
-        NH34white = document.getElementById('NH34-35_white');
-        NH34black = document.getElementById('NH34-35_black');
-        NH36white = document.getElementById('NH36_white');
-        NH36black = document.getElementById('NH36_black');
-        NH38 = document.getElementById('NH38');
+        const NH34white = document.getElementById('NH34-35_white');
+        const NH34black = document.getElementById('NH34-35_black');
+        const NH36white = document.getElementById('NH36_white');
+        const NH36black = document.getElementById('NH36_black');
+        const NH38 = document.getElementById('NH38');
 
-        currentMovement = "";
-        currentCase = "";
+        let currentMovement = "";
+        let currentCase = "";
 
 
         // Movement Selection
@@ -820,7 +820,7 @@
         dialButtons.forEach(button => {
             button.addEventListener("click", function() {
 
-                buttonID = button.id
+                let buttonID = button.id
                 document.getElementById("color-picker-holder").classList.remove('hidden')
                 
                 if (currentMovement == "NH34-NH35") {
@@ -855,9 +855,9 @@
         const mercedesHands = document.querySelectorAll(".mercedes-hands");
         mercedesHands.forEach(hands => {
             hands.addEventListener("click", function() {
-                color = hands.id
+                let color = hands.id
                 color = color.substring(9, color.length)
-                fileLocation = "hands/Mercedes/" + color + ".png"
+                let fileLocation = "hands/Mercedes/" + color + ".png"
                 handsImage.src = fileLocation
             });
         });
@@ -865,9 +865,9 @@
         const pilotHands = document.querySelectorAll(".pilot-hands");
         pilotHands.forEach(hands => {
             hands.addEventListener("click", function() {
-                color = hands.id
+                let color = hands.id
                 color = color.substring(6, color.length)
-                fileLocation = "hands/Pilot/" + color + ".png"
+                let fileLocation = "hands/Pilot/" + color + ".png"
                 handsImage.src = fileLocation
             });
         });
@@ -875,9 +875,9 @@
         const SKXHands = document.querySelectorAll(".SKX-hands");
         SKXHands.forEach(hands => {
             hands.addEventListener("click", function() {
-                color = hands.id
+                let color = hands.id
                 color = color.substring(4, color.length)
-                fileLocation = "hands/SKX/" + color + ".png"
+                let fileLocation = "hands/SKX/" + color + ".png"
                 handsImage.src = fileLocation
             });
         });
@@ -885,9 +885,9 @@
         const gmtHands = document.querySelectorAll(".gmt-hands");
         gmtHands.forEach(hands => {
             hands.addEventListener("click", function() {
-                color = hands.id
+                let color = hands.id
                 color = color.substring(4, color.length)
-                fileLocation = "hands/GMT/" + color + ".png"
+                let fileLocation = "hands/GMT/" + color + ".png"
                 gmtImage.src = fileLocation
             });
         });
@@ -907,9 +907,9 @@
         pilotCases.forEach(cases => {
             cases.addEventListener("click", function() {
                 caseReveal("Pilot")
-                color = cases.id
+                let color = cases.id
                 color = color.substring(6, color.length)
-                fileLocation = "case/Pilot/" + color + ".png"
+                let fileLocation = "case/Pilot/" + color + ".png"
                 caseImage.src = fileLocation
             });
         });
@@ -918,9 +918,9 @@
         rolexCases.forEach(cases => {
             cases.addEventListener("click", function() {
                 caseReveal("Rolex")
-                color = cases.id
+                let color = cases.id
                 color = color.substring(6, color.length)
-                fileLocation = "case/Rolex/" + color + ".png"
+                let fileLocation = "case/Rolex/" + color + ".png"
                 caseImage.src = fileLocation
             });
         });
@@ -929,9 +929,9 @@
         SKXCase.forEach(cases => {
             cases.addEventListener("click", function() {
                 caseReveal("SKX")
-                color = cases.id
+                let color = cases.id
                 color = color.substring(4, color.length)
-                fileLocation = "case/SKX/" + color + ".png"
+                let fileLocation = "case/SKX/" + color + ".png"
                 caseImage.src = fileLocation
             });
         });
@@ -942,9 +942,9 @@
         const diverBezel = document.querySelectorAll(".diver-bezel");
         diverBezel.forEach(bezel => {
             bezel.addEventListener("click", function() {
-                color = bezel.id
+                let color = bezel.id
                 color = color.substring(6, color.length)
-                fileLocation = "case/Bezel/Diver/" + color + ".png"
+                let fileLocation = "case/Bezel/Diver/" + color + ".png"
                 bezelImage.src = fileLocation
             });
         });
@@ -952,9 +952,9 @@
         const gmtBezel = document.querySelectorAll(".gmt-bezel");
         gmtBezel.forEach(bezel => {
             bezel.addEventListener("click", function() {
-                color = bezel.id
+                let color = bezel.id
                 color = color.substring(4, color.length)
-                fileLocation = "case/Bezel/GMT/" + color + ".png"
+                let fileLocation = "case/Bezel/GMT/" + color + ".png"
                 bezelImage.src = fileLocation
             });
         });
