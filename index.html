@@ -673,7 +673,15 @@
 
     </div>
 
-    <script>
+    <script> // Mobile Scaling
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            //
+        }
+
+    </script>
+
+    <script> // Dial Shading/Coloring
 
         // Var Declare
 
@@ -725,7 +733,7 @@
 
     </script>
 
-    <script>
+    <script> // Button Visibility Handler
         function toggleVisibility(event) {
             const element = event.target.nextElementSibling; 
             element.classList.toggle("hidden"); 
@@ -737,7 +745,7 @@
         });
     </script>
 
-    <script>
+    <script> // Button Handler
         const movementImage = document.getElementById("movement");
         const dialBlankImage = document.getElementById("dial-blank");
         const dialOverlayImage = document.getElementById("dial-overlay");
@@ -801,16 +809,19 @@
         NH36white.addEventListener("click", function() {
             movementImage.src = "movements/NH36-White.png"
             typeReveal("NH36")
+            gmtImage.src = ""
         })
 
         NH36black.addEventListener("click", function() {
             movementImage.src = "movements/NH36-Black.png"
             typeReveal("NH36")
+            gmtImage.src = ""
         })
 
         NH38.addEventListener("click", function() {
             movementImage.src = "movements/NH38.png"
             typeReveal("NH38")
+            gmtImage.src = ""
         })
 
 
@@ -907,6 +918,7 @@
         pilotCases.forEach(cases => {
             cases.addEventListener("click", function() {
                 caseReveal("Pilot")
+                bezelImage.src = ""
                 let color = cases.id
                 color = color.substring(6, color.length)
                 let fileLocation = "case/Pilot/" + color + ".png"
