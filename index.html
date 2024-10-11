@@ -213,22 +213,22 @@
                 <div id="NH34_36-dials" class="hidden">
                     <h3 class="menu-subtitle">Pilot Dial</h3>
 
-                        <div class="menu-item dial-buttons" id="pilot-black-dial">
+                        <div class="menu-item dial-buttons" id="pilot-dial-black">
                             <h4>Black Marks</h4>
                         </div>
-                        <div class="menu-item dial-buttons" id="pilot-tan__-dial">
+                        <div class="menu-item dial-buttons" id="pilot-dial-tan__">
                             <h4>Tan Marks</h4>
                         </div>
-                        <div class="menu-item dial-buttons" id="pilot-white-dial">
+                        <div class="menu-item dial-buttons" id="pilot-dial-white">
                             <h4>White Marks</h4>
                         </div>
                         
                     <h3 class="menu-subtitle">Diver Dial</h3>
 
-                        <div class="menu-item dial-buttons" id="diver-black-dial">
+                        <div class="menu-item dial-buttons" id="diver-dial-black">
                             <h4>Black Marks</h4>
                         </div>
-                        <div class="menu-item dial-buttons" id="diver-white-dial">
+                        <div class="menu-item dial-buttons" id="diver-dial-white">
                             <h4>White Marks</h4>
                         </div>
 
@@ -238,22 +238,26 @@
 
                     <h3 class="menu-subtitle">Exposed Movement</h3>
 
-                        <div class="menu-item dial-buttons" id="open-white-dial">
+                        <div class="menu-item dial-buttons" id="open-dial-white">
                             <h4>White Marks</h4>
                         </div>
 
                     <h3 class="menu-subtitle">Dateless Dial</h3>
                     
-                        <div class="menu-item dial-buttons" id="dateless-black-dial">
+                        <div class="menu-item dial-buttons" id="dateless-dial-black">
                             <h4>Black Marks</h4>
                         </div>
 
-                        <div class="menu-item dial-buttons" id="dateless-tan__-dial">
+                        <div class="menu-item dial-buttons" id="dateless-dial-tan__">
                             <h4>Tan Marks</h4>
                         </div>
 
-                        <div class="menu-item dial-buttons" id="dateless-white-dial">
+                        <div class="menu-item dial-buttons" id="dateless-dial-white">
                             <h4>White Marks</h4>
+                        </div>
+
+                        <div class="menu-item dial-buttons" id="dateless-dial-50-Fathoms-Rad">
+                            <h4>50 Fathoms - Radiation</h4>
                         </div>
 
                 </div>
@@ -431,6 +435,10 @@
 
                     <div class="menu-item pilot-case" id="pilot-silver">
                         <h4>Silver</h4>
+                    </div>
+
+                    <div class="menu-item pilot-case" id="pilot-SKX-bezelless-silver">
+                        <h4>SKX No Bezel Silver</h4>
                     </div>
 
                 <h3 class="menu-subtitle">Rolex Style Cases</h3>
@@ -765,20 +773,20 @@
 
                 if (buttonID.substring(0, 5) == "diver") {
 
-                    dialOverlayImage.src = "dial/NH34-NH35-NH36/Diver/diver-" + buttonID.substring(6, 11) + ".png"
+                    dialOverlayImage.src = "dial/NH34-NH35-NH36/Diver/diver-" + buttonID.substring(11, buttonID.length) + ".png"
 
                 } else if (buttonID.substring(0, 5) == "pilot") {
 
-                    dialOverlayImage.src = "dial/NH34-NH35-NH36/Pilot/pilot-" + buttonID.substring(6, 11) + ".png"
+                    dialOverlayImage.src = "dial/NH34-NH35-NH36/Pilot/pilot-" + buttonID.substring(11, buttonID.length) + ".png"
 
                 } else if (buttonID.substring(0, 4) == "open") {
                     dialBlankImage.src = "dial/NH38/exposed.png"
 
-                    dialOverlayImage.src = "dial/NH38/Open-Movement/exposed-" + buttonID.substring(5, 10) + ".png"
+                    dialOverlayImage.src = "dial/NH38/Open-Movement/exposed-" + buttonID.substring(10, buttonID.length) + ".png"
                 } else if (buttonID.substring(0, 4) == "date") {
                     dialBlankImage.src = "dial/NH38/dateless.png"
                     
-                    dialOverlayImage.src = "dial/NH38/Dateless/pilot-" + buttonID.substring(9, 14) + ".png"
+                    dialOverlayImage.src = "dial/NH38/Dateless/pilot-" + buttonID.substring(14, buttonID.length) + ".png"
                 }
 
             });
