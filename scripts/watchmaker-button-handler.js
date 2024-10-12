@@ -104,6 +104,10 @@ const movementImage = document.getElementById("movement");
 
                     dialOverlayImage.src = "dial/NH34-NH35-NH36/Pilot/pilot-" + buttonID.substring(11, buttonID.length) + ".png"
 
+                } else if (buttonID.substring(0, 8) == "straight") {
+
+                    dialOverlayImage.src = "dial/NH34-NH35-NH36/Straight-Line/straight-" + buttonID.substring(9, buttonID.length) + ".png"
+                    
                 } else if (buttonID.substring(0, 4) == "open") {
                     dialBlankImage.src = "dial/NH38/exposed.png"
 
@@ -112,7 +116,7 @@ const movementImage = document.getElementById("movement");
                     dialBlankImage.src = "dial/NH38/dateless.png"
                     
                     dialOverlayImage.src = "dial/NH38/Dateless/pilot-" + buttonID.substring(14, buttonID.length) + ".png"
-                }
+                } 
 
             });
         });
