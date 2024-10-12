@@ -11,3 +11,8 @@ const buttons = document.querySelectorAll(".selection-button");
 buttons.forEach(button => {
     button.addEventListener("click", toggleVisibility);
 });
+
+const menuButtons = document.querySelectorAll(".menu-subtitle-dropdown");
+menuButtons.forEach(button => {
+    button.addEventListener("click", toggleVisibility);
+});

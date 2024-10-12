@@ -161,6 +161,17 @@ body {
     user-select: none;
 }
 
+.menu-subtitle-dropdown {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.menu-subitem {
+    animation: grow 1s;
+}
+
 @keyframes menuitem-hover {
     0% {
         background-color: rgba(197, 196, 196, 0.959);
