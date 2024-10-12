@@ -129,6 +129,16 @@ const movementImage = document.getElementById("movement");
             });
         });
 
+        const batonHands = document.querySelectorAll(".baton-hands");
+        batonHands.forEach(hands => {
+            hands.addEventListener("click", function() {
+                let color = hands.id
+                color = color.substring(6, color.length)
+                let fileLocation = "hands/Baton/" + color + ".png"
+                handsImage.src = fileLocation
+            });
+        });
+
         const pilotHands = document.querySelectorAll(".pilot-hands");
         pilotHands.forEach(hands => {
             hands.addEventListener("click", function() {
